@@ -4,14 +4,13 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<title>7-Min Academic Pitch: Youth Crime Intervention</title>
-		<!-- 直接内嵌官方核心样式，彻底解决网络拦截和加载失败问题 -->
 		<style>
 			html, body { width: 100%; height: 100%; overflow: hidden; margin: 0; padding: 0; background-color: #111111; color: #eeeeee; font-family: Helvetica, sans-serif; }
 			.slides-container { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; }
-			.slide-page { display: none; width: 85%; max-width: 1000px; text-align: center; animation: fadeIn 0.5s ease; }
+			.slide-page { display: none; width: 85%; max-width: 1000px; text-align: center; animation: fadeIn 0.4s ease; }
 			.slide-page.active { display: block; }
-			@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-			h2 { color: #e74c3c; font-size: 2.2em; margin-bottom: 20px; font-weight: bold; text-transform: none; }
+			@keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+			h2 { color: #e74c3c; font-size: 2.2em; margin-bottom: 20px; font-weight: bold; text-transform: none; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
 			h3 { color: #ffffff; font-size: 1.4em; margin-bottom: 20px; }
 			p, li { font-size: 1.1em; line-height: 1.6; text-align: left; color: #dddddd; }
 			ul { display: inline-block; text-align: left; margin-top: 15px; }
@@ -20,18 +19,24 @@
 			.gap-box { background: rgba(231, 76, 60, 0.15); border-left: 6px solid #e74c3c; padding: 20px; margin: 20px 0; text-align: left; border-radius: 4px; }
 			.citation { font-size: 0.6em; color: #95a5a6; display: block; margin-top: 15px; text-align: left; font-style: italic; }
 			.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; text-align: left; margin-top: 20px; }
-			.speaker-note { background: rgba(241, 196, 15, 0.15); border-left: 5px solid #f1c40f; padding: 12px; font-size: 0.75em; color: #f1c40f; margin-top: 30px; text-align: left; border-radius: 4px; }
-			.nav-btn { position: fixed; bottom: 20px; right: 20px; background: rgba(255,255,255,0.1); color: #fff; border: none; padding: 10px 15px; cursor: pointer; border-radius: 4px; font-size: 0.9em; z-index: 100; }
-			.nav-btn:hover { background: rgba(255,255,255,0.2); }
-			.progress-bar { position: fixed; bottom: 0; left: 0; height: 5px; background: #e74c3c; transition: width 0.3s ease; z-index: 101; }
+			.speaker-note { background: rgba(241, 196, 15, 0.15); border-left: 5px solid #f1c40f; padding: 12px; font-size: 0.75em; color: #f1c40f; margin-top: 30px; text-align: left; border-radius: 4px; font-weight: bold; }
+			.controls-cluster { position: fixed; bottom: 25px; right: 25px; display: flex; gap: 10px; z-index: 999; }
+			.nav-btn { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 12px 20px; cursor: pointer; border-radius: 6px; font-size: 1em; font-weight: bold; transition: all 0.2s ease; user-select: none; }
+			.nav-btn:hover { background: #e74c3c; border-color: #e74c3c; transform: translateY(-2px); }
+			.nav-btn:active { transform: translateY(0); }
+			.progress-bar { position: fixed; bottom: 0; left: 0; height: 6px; background: #e74c3c; transition: width 0.3s ease; z-index: 1000; }
 		</style>
 	</head>
 	<body>
 		<div class="progress-bar" id="progressBar" style="width: 6.25%;"></div>
-		<button class="nav-btn" onclick="nextSlide()">Next 👉 (or Space/Right Arrow)</button>
-		<button class="nav-btn" style="right: 180px;" onclick="prevSlide()">👈 Prev</button>
+		
+		<!-- 彻底重构的控制按钮组合 -->
+		<div class="controls-cluster">
+			<button class="nav-btn" onclick="prevSlide()">◀ Prev</button>
+			<button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+		</div>
 
-		<div class="slides-container">
+		<div class="slides-container" onclick="focusPage()">
 			<!-- Slide 1: Welcome & Title -->
 			<div class="slide-page active">
 				<h2>Rethinking Youth Crime</h2>
@@ -153,6 +158,3 @@
 
 			<!-- Slide 11: Discoveries So Far -->
 			<div class="slide-page">
-				<h2>6. Discoveries Made So Far</h2>
-				<ul style="display: block;">
-					<li><strong>Gen-Z Persona Bias:</strong> Traditional paper-based check-ins trigger a 65% defiance rate among high-risk youth.</li>
