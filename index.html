@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>我的网页 PPT</title>
+
+		<!-- 引入 Reveal.js 的核心样式与主题（通过 CDN 免安装） -->
+		<link rel="stylesheet" href="https://cloudflare.com">
+		<link rel="stylesheet" href="https://cloudflare.com">
+		<!-- 这里可以选择不同主题，如 black, white, league, beige, sky, night, serif, simple, solarized -->
+		<link rel="stylesheet" href="https://cloudflare.com">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				
+				<!-- 第一页：封面 -->
+				<section>
+					<h1>我的第一份 HTML PPT</h1>
+					<p>用 GitHub + Reveal.js 轻松制作</p>
+				</section>
+
+				<!-- 第二页：普通内容 -->
+				<section>
+					<h2>为什么选择 HTML PPT？</h2>
+					<ul>
+						<li>🚀 零依赖：有浏览器就能播</li>
+						<li>💻 炫酷的过渡动画</li>
+						<li>版本控制：不怕内容丢失</li>
+					</ul>
+				</section>
+
+				<!-- 第三页：纵向幻灯片（向下翻页） -->
+				<section>
+					<section>
+						<h2>向下翻页试试 👇</h2>
+						<p>这一页包含子页面</p>
+					</section>
+					<section>
+						<h2>这是子页面内容 1</h2>
+					</section>
+					<section>
+						<h2>这是子页面内容 2</h2>
+					</section>
+				</section>
+
+				<!-- 第四页：带代码高亮的页面 -->
+				<section>
+					<h2>支持代码高亮</h2>
+					<pre><code class="language-javascript">
+function sayHello() {
+  console.log("Hello, World!");
+}
+					</code></pre>
+				</section>
+
+			</div>
+		</div>
+
+		<!-- 引入 Reveal.js 核心 JS -->
+		<script href="https://cloudflare.com"></script>
+		<script>
+			// 初始化 PPT 
+			Reveal.initialize({
+				hash: true, // 开启链接 hash 记录页码
+				controls: true, // 显示右下角控制箭头
+				progress: true, // 显示底部进度条
+				center: true, // 垂直居中
+				transition: 'convex' // 翻页动画：none/fade/slide/convex/concave/zoom
+			});
+		</script>
+	</body>
+</html>
