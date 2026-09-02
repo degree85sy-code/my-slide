@@ -1,525 +1,1658 @@
----
-marp: true
-theme: default
-paginate: true
-size: 16:9
-title: Preventing Youth Reoffending
-description: Group Case Study Pitch
-author: Group Case Study Team
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Preventing Youth Reoffending | Group Case Study Pitch</title>
 
 <style>
-section {
-  font-family: "Aptos", "Arial", sans-serif;
-  background: #f7f8fa;
-  color: #17202a;
-  padding: 55px 75px;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
+body {
+    background: #111827;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+    color: #17202a;
+}
+
+/* =========================
+   PRESENTATION CONTAINER
+========================= */
+
+.presentation {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+/* =========================
+   SLIDES
+========================= */
+
+.slide {
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 6vh 7vw;
+    background: #f7f8fa;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.slide.active {
+    display: flex;
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+
 h1 {
-  color: #16324f;
-  font-size: 42px;
-  font-weight: 800;
+    font-size: clamp(42px, 5vw, 78px);
+    line-height: 1.04;
+    font-weight: 800;
+    color: #16324f;
 }
 
 h2 {
-  color: #1f5f8b;
-  font-size: 30px;
-  margin-bottom: 20px;
+    font-size: clamp(30px, 3vw, 48px);
+    color: #16324f;
+    margin-bottom: 3vh;
+    font-weight: 800;
 }
 
 h3 {
-  color: #d46b3c;
+    color: #1f5f8b;
+    font-size: clamp(21px, 2vw, 30px);
+    margin-bottom: 12px;
 }
 
-strong {
-  color: #d46b3c;
-}
-
-blockquote {
-  border-left: 6px solid #d46b3c;
-  padding-left: 20px;
-  color: #30475e;
-  font-size: 25px;
+p {
+    font-size: clamp(18px, 1.5vw, 25px);
+    line-height: 1.45;
 }
 
 .small {
-  font-size: 18px;
-}
-
-.medium {
-  font-size: 23px;
-}
-
-.big {
-  font-size: 34px;
-  font-weight: 700;
-}
-
-.center {
-  text-align: center;
-}
-
-.card {
-  background: white;
-  border-radius: 18px;
-  padding: 22px;
-  margin: 10px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-}
-
-.highlight {
-  background: #fff1e8;
-  border-left: 6px solid #d46b3c;
-  padding: 18px 25px;
-  border-radius: 10px;
-}
-
-.blue {
-  color: #1f5f8b;
+    font-size: clamp(13px, 1vw, 17px);
+    color: #64748b;
 }
 
 .orange {
-  color: #d46b3c;
+    color: #d46b3c;
 }
 
-footer {
-  color: #64748b;
+.blue {
+    color: #1f5f8b;
 }
+
+.bold {
+    font-weight: 800;
+}
+
+/* =========================
+   TITLE SLIDE
+========================= */
+
+.title-slide {
+    background:
+        radial-gradient(circle at 85% 20%, rgba(31,95,139,0.15), transparent 30%),
+        radial-gradient(circle at 15% 85%, rgba(212,107,60,0.13), transparent 30%),
+        #f7f8fa;
+}
+
+.title-slide .number {
+    color: #d46b3c;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+}
+
+.title-slide h1 {
+    max-width: 900px;
+}
+
+.subtitle {
+    font-size: clamp(24px, 2.3vw, 38px);
+    color: #1f5f8b;
+    margin-top: 25px;
+    max-width: 900px;
+    line-height: 1.25;
+}
+
+.tagline {
+    margin-top: 45px;
+    padding-left: 20px;
+    border-left: 5px solid #d46b3c;
+    font-size: clamp(20px, 1.7vw, 28px);
+    color: #475569;
+}
+
+.members {
+    position: absolute;
+    bottom: 6vh;
+    left: 7vw;
+    color: #64748b;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.section-number {
+    font-size: 15px;
+    letter-spacing: 3px;
+    color: #d46b3c;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.header-line {
+    width: 70px;
+    height: 5px;
+    background: #d46b3c;
+    margin-bottom: 25px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    width: 100%;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 27px;
+    box-shadow: 0 8px 25px rgba(15,23,42,0.07);
+    border: 1px solid #e5e7eb;
+}
+
+.card p {
+    color: #475569;
+}
+
+.card strong {
+    color: #d46b3c;
+}
+
+/* =========================
+   BIG QUESTION
+========================= */
+
+.question-box {
+    background: #fff1e8;
+    border-left: 7px solid #d46b3c;
+    border-radius: 12px;
+    padding: 30px 35px;
+    margin-top: 28px;
+    max-width: 1000px;
+}
+
+.question-box p {
+    font-size: clamp(24px, 2.2vw, 36px);
+    font-weight: 700;
+    color: #30475e;
+}
+
+/* =========================
+   TWO COLUMN
+========================= */
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    width: 100%;
+}
+
+.column-box {
+    background: white;
+    border-radius: 18px;
+    padding: 30px;
+    border-top: 6px solid #1f5f8b;
+    box-shadow: 0 8px 25px rgba(15,23,42,0.06);
+}
+
+.column-box.orange-top {
+    border-top-color: #d46b3c;
+}
+
+.column-box ul {
+    list-style: none;
+    margin-top: 15px;
+}
+
+.column-box li {
+    font-size: clamp(17px, 1.35vw, 22px);
+    padding: 11px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.column-box li:last-child {
+    border-bottom: none;
+}
+
+/* =========================
+   FOCUS SLIDE
+========================= */
+
+.focus-word {
+    font-size: clamp(45px, 7vw, 105px);
+    font-weight: 900;
+    color: #d46b3c;
+    margin: 10px 0 25px;
+}
+
+.pipeline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.pipeline-item {
+    background: white;
+    border-radius: 12px;
+    padding: 17px 22px;
+    font-weight: 700;
+    color: #1f5f8b;
+    box-shadow: 0 5px 16px rgba(15,23,42,0.08);
+}
+
+.arrow {
+    font-size: 27px;
+    color: #d46b3c;
+    font-weight: 800;
+}
+
+/* =========================
+   QUESTION GRID
+========================= */
+
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.research-item {
+    background: white;
+    border-radius: 15px;
+    padding: 22px;
+    box-shadow: 0 6px 20px rgba(15,23,42,0.06);
+}
+
+.research-number {
+    font-size: 17px;
+    font-weight: 800;
+    color: #d46b3c;
+    margin-bottom: 8px;
+}
+
+.research-item p {
+    font-size: clamp(17px, 1.3vw, 21px);
+}
+
+/* =========================
+   EXISTING SYSTEM
+========================= */
+
+.system {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.system-card {
+    background: white;
+    border-radius: 18px;
+    padding: 25px;
+    min-height: 260px;
+    box-shadow: 0 7px 22px rgba(15,23,42,0.07);
+}
+
+.system-card .icon {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.system-card ul {
+    list-style: none;
+}
+
+.system-card li {
+    margin: 10px 0;
+    color: #475569;
+    font-size: 18px;
+}
+
+/* =========================
+   GAP SLIDE
+========================= */
+
+.gap-statement {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.gap-statement .big {
+    font-size: clamp(35px, 4vw, 62px);
+    font-weight: 900;
+    color: #16324f;
+}
+
+.gap-statement .small-big {
+    font-size: clamp(23px, 2.2vw, 35px);
+    color: #d46b3c;
+    margin-top: 10px;
+}
+
+.gap-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.gap-item {
+    background: white;
+    border-radius: 15px;
+    padding: 22px 18px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(15,23,42,0.06);
+}
+
+.gap-item .title {
+    color: #1f5f8b;
+    font-weight: 900;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.gap-item p {
+    font-size: 16px;
+    color: #64748b;
+}
+
+/* =========================
+   FINDINGS
+========================= */
+
+.findings {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.finding {
+    background: white;
+    border-radius: 15px;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 55px 1fr;
+    gap: 15px;
+    box-shadow: 0 6px 20px rgba(15,23,42,0.06);
+}
+
+.finding-number {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #fff1e8;
+    color: #d46b3c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 18px;
+}
+
+.finding p {
+    font-size: 17px;
+    color: #64748b;
+}
+
+/* =========================
+   CONTRIBUTION
+========================= */
+
+.prevention-path {
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+    margin: 28px 0;
+}
+
+.path-item {
+    flex: 1;
+    background: white;
+    border-radius: 13px;
+    padding: 22px 10px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(15,23,42,0.07);
+}
+
+.path-number {
+    font-size: 13px;
+    color: #d46b3c;
+    font-weight: 900;
+}
+
+.path-title {
+    margin-top: 8px;
+    color: #1f5f8b;
+    font-weight: 800;
+    font-size: 17px;
+}
+
+.path-arrow {
+    display: flex;
+    align-items: center;
+    color: #d46b3c;
+    font-size: 25px;
+}
+
+.contribution {
+    background: #16324f;
+    color: white;
+    border-radius: 18px;
+    padding: 25px 30px;
+}
+
+.contribution p {
+    color: white;
+    font-size: 21px;
+}
+
+/* =========================
+   TEAM
+========================= */
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+}
+
+.team-card {
+    background: white;
+    border-radius: 15px;
+    padding: 22px 14px;
+    text-align: center;
+    min-height: 190px;
+    box-shadow: 0 6px 18px rgba(15,23,42,0.06);
+}
+
+.team-card .symbol {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.team-card h3 {
+    font-size: 18px;
+}
+
+.team-card p {
+    font-size: 14px;
+    color: #64748b;
+}
+
+.method {
+    text-align: center;
+    margin-top: 28px;
+    font-size: clamp(22px, 2.2vw, 35px);
+    font-weight: 900;
+    color: #1f5f8b;
+}
+
+/* =========================
+   FEEDBACK
+========================= */
+
+.feedback-question {
+    text-align: center;
+    max-width: 1100px;
+    margin: 0 auto 30px;
+}
+
+.feedback-question h2 {
+    margin-bottom: 15px;
+}
+
+.feedback-question .main-question {
+    font-size: clamp(25px, 2.5vw, 42px);
+    line-height: 1.2;
+    color: #16324f;
+    font-weight: 800;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.option {
+    background: white;
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: 0 8px 25px rgba(15,23,42,0.08);
+}
+
+.option h3 {
+    font-size: 24px;
+}
+
+.option p {
+    color: #64748b;
+    font-size: 18px;
+}
+
+.feedback-bottom {
+    margin-top: 28px;
+    text-align: center;
+    color: #d46b3c;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+/* =========================
+   REFERENCES
+========================= */
+
+.references {
+    max-width: 1050px;
+}
+
+.references p {
+    font-size: 17px;
+    margin: 13px 0;
+    color: #475569;
+}
+
+/* =========================
+   CONTROLS
+========================= */
+
+.controls {
+    position: fixed;
+    bottom: 20px;
+    right: 28px;
+    z-index: 100;
+    display: flex;
+    gap: 8px;
+    opacity: 0.7;
+}
+
+.controls button {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background: #16324f;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.controls button:hover {
+    background: #d46b3c;
+}
+
+.progress {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background: #d46b3c;
+    width: 0%;
+    transition: width 0.25s ease;
+    z-index: 200;
+}
+
+.page-number {
+    position: fixed;
+    bottom: 24px;
+    left: 28px;
+    color: #64748b;
+    font-size: 14px;
+    z-index: 100;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .cards,
+    .two-column,
+    .research-grid,
+    .findings,
+    .options {
+        grid-template-columns: 1fr;
+    }
+
+    .system {
+        grid-template-columns: 1fr;
+    }
+
+    .gap-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .prevention-path {
+        flex-wrap: wrap;
+    }
+
+    .path-arrow {
+        display: none;
+    }
+}
+
 </style>
+</head>
 
-<!-- _class: lead -->
 
-# Preventing Youth Reoffending
+<body>
 
-## Strengthening Early Intervention and Community-Based Diversion in NSW
+<div class="presentation">
 
-<br>
 
-### Group Case Study Pitch
+<!-- =====================================================
+     SLIDE 1
+===================================================== -->
 
-**From punishment to prevention**
+<section class="slide active title-slide">
 
-<br>
+    <div class="number">
+        GROUP CASE STUDY PITCH · 2026
+    </div>
 
-Group Members  
-Name 1 · Name 2 · Name 3 · Name 4
+    <h1>
+        Preventing Youth
+        <br>
+        <span class="orange">Reoffending</span>
+    </h1>
 
----
+    <div class="subtitle">
+        Strengthening Early Intervention and
+        Community-Based Diversion in NSW
+    </div>
 
-# 01 — Why This Matters
+    <div class="tagline">
+        From <strong>punishment</strong> to <strong>prevention</strong>
+    </div>
 
-## Youth offending is declining — but reoffending remains a serious challenge
+    <div class="members">
+        <strong>Group Members</strong>
+        &nbsp; Name 1 · Name 2 · Name 3 · Name 4
+    </div>
 
-<div class="card">
+</section>
 
-### NSW youth offending
 
-Youth offending has **declined substantially over the long term**.
+<!-- =====================================================
+     SLIDE 2
+===================================================== -->
+
+<section class="slide">
+
+    <div class="section-number">01 · WHY THIS MATTERS</div>
+    <div class="header-line"></div>
+
+    <h2>
+        Youth offending is declining —
+        <span class="orange">but reoffending remains a challenge.</span>
+    </h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>NSW Youth Offending</h3>
+            <p>
+                Youth offending has
+                <strong>declined substantially over the long term.</strong>
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Reoffending</h3>
+            <p>
+                Among young people released from sentenced custody in
+                <strong>2023, 62.5% reoffended within 12 months.</strong>
+            </p>
+        </div>
+
+    </div>
+
+    <div class="question-box">
+
+        <p>
+            If overall youth offending is falling,
+            <span class="orange">
+            why do some young people remain caught in cycles of reoffending?
+            </span>
+        </p>
+
+    </div>
+
+    <p class="small" style="margin-top:20px;">
+        Source: NSW Bureau of Crime Statistics and Research (BOCSAR), 2026.
+    </p>
+
+</section>
+
+
+<!-- =====================================================
+     SLIDE 3
+===================================================== -->
+
+<section class="slide">
+
+    <div class="section-number">02 · OUR SPECIFIC FOCUS</div>
+    <div class="header-line"></div>
+
+    <h2>
+        Moving beyond “youth crime”
+    </h2>
+
+    <p style="color:#64748b;">
+        Our case study is narrower than youth crime generally.
+    </p>
+
+    <div class="focus-word">
+        YOUTH REOFFENDING
+    </div>
+
+    <div class="pipeline">
+
+        <div class="pipeline-item">
+            Early Intervention
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="pipeline-item">
+            Diversion
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="pipeline-item">
+            Community Support
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="pipeline-item">
+            Reoffending
+        </div>
+
+    </div>
+
+    <div class="question-box">
+
+        <p>
+            We shift the question from
+            <strong>“How should young people be punished?”</strong>
+            to
+            <span class="orange">
+            “How can repeated justice involvement be prevented?”
+            </span>
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SLIDE 4
+===================================================== -->
+
+<section class="slide">
+
+    <div class="section-number">03 · OUR RESEARCH QUESTION</div>
+    <div class="header-line"></div>
+
+    <h2>
+        What exactly are we investigating?
+    </h2>
+
+    <div class="question-box">
+
+        <p>
+            How can existing early-intervention and diversion pathways
+            be strengthened to reduce repeated youth offending in NSW?
+        </p>
+
+    </div>
+
+    <div class="research-grid" style="margin-top:25px;">
+
+        <div class="research-item">
+            <div class="research-number">01 · IDENTIFICATION</div>
+            <p>
+                Which factors are associated with repeated youth offending?
+            </p>
+        </div>
+
+        <div class="research-item">
+            <div class="research-number">02 · INTERVENTION</div>
+            <p>
+                Which diversion and early-intervention programs demonstrate measurable outcomes?
+            </p>
+        </div>
+
+        <div class="research-item">
+            <div class="research-number">03 · IMPLEMENTATION</div>
+            <p>
+                Why do apparently effective interventions produce different outcomes?
+            </p>
+        </div>
+
+        <div class="research-item">
+            <div class="research-number">04 · CONTINUITY</div>
+            <p>
+                Where do gaps occur between justice, family, education and community services?
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SLIDE 5
+===================================================== -->
+
+<section class="slide">
+
+    <div class="section-number">04 · WHAT ALREADY EXISTS?</div>
+    <div class="header-line"></div>
+
+    <h2>
+        NSW already has intervention mechanisms.
+    </h2>
+
+    <div class="system">
+
+        <div class="system-card">
+
+            <div class="icon">⚖</div>
+
+            <h3>Diversion</h3>
+
+            <ul>
+                <li>Police warnings</li>
+                <li>Police cautions</li>
+                <li>Youth Justice Conferences</li>
+                <li>Community-based responses</li>
+            </ul>
+
+        </div>
+
+        <div class="system-card">
+
+            <div class="icon">◎</div>
+
+            <h3>Early Intervention</h3>
+
+            <ul>
+                <li>Youth on Track</li>
+                <li>Case management</li>
+                <li>Family interventions</li>
+                <li>Cognitive-behavioural support</li>
+            </ul>
+
+        </div>
+
+        <div class="system-card">
+
+            <div class="icon">◯</div>
+
+            <h3>Community Support</h3>
+
+            <ul>
+                <li>Mentoring</li>
+                <li>Education</li>
+                <li>Employment support</li>
+                <li>Housing & social services</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="question-box">
+
+        <p>
+            The problem is not simply
+            <span class="orange">“there are no programs.”</span>
+            <br>
+            Our question is whether existing interventions are
+            <strong>targeted, coordinated and sustained.</strong>
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SLIDE 6
+===================================================== -->
+
+<section class="slide">
+
+    <div class="section-number">05 · WHAT WE HAVE DISCOVERED</div>
+    <div class="header-line"></div>
+
+    <h2>
+        Early evidence points to a
+        <span class="orange">complex picture.</span>
+    </h2>
+
+    <div class="findings">
+
+        <div class="finding">
+
+            <div class="finding-number">01</div>
+
+            <div>
+                <h3>Youth offending is not simply increasing.</h3>
+                <p>
+                    Long-term NSW data indicates substantial declines in youth offending.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="finding">
+
+            <div class="finding-number">02</div>
+
+            <div>
+                <h3>Reoffending remains concentrated.</h3>
+                <p>
+                    A smaller but important group experiences particularly high rates of subsequent offending.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="finding">
+
+            <div class="finding-number">03</div>
+
+            <div>
+                <h3>Intervention does not automatically equal effectiveness.</h3>
+                <p>
+                    Evaluation of Youth on Track found mixed outcomes, including no statistically significant overall effect on reoffending and custody outcomes.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="finding">
+
+            <div class="finding-number">04</div>
+
+            <div>
+                <h3>Community relationships may matter.</h3>
+                <p>
+                    Mentoring evidence highlights matching, supervision, engagement and community networks.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <p class="small" style="margin-top:18px;">
+        Sources: BOCSAR (2022; 2026); NSW Department of Communities and Justice (2022).
+    </p>
+
+</section>
+
+
+<!-- =====================================================
+     SLIDE 7
+===================================================== -->
+
+<section class="slide">
+
+    <div class="section-number">06 · THE GAP</div>
+    <div class="header-line"></div>
+
+    <div class="gap-statement">
+
+        <div class="big">
+            Programs exist.
+        </div>
+
+        <div class="small-big">
+            But pathways may not always connect.
+        </div>
+
+    </div>
+
+    <div class="gap-grid">
+
+        <div class="gap-item">
+            <div class="title">TARGETING</div>
+            <p>
+                Are interventions sufficiently tailored to individual needs?
+            </p>
+        </div>
+
+        <div class="gap-item">
+            <div class="title">COORDINATION</div>
+            <p>
+                Are justice, family, education and community services connected?
+            </p>
+        </div>
+
+        <div class="gap-item">
+            <div class="title">CONTINUITY</div>
+            <p>
+                What happens after a young person completes an intervention?
+            </p>
+        </div>
+
+        <div class="gap-item">
+            <div class="title">SUSTAINABILITY</div>
+            <p>
+                Can positive behavioural changes be maintained?
+            </p>
+        </div>
+
+    </div>
+
+    <div class="question-box">
+
+        <p>
+            Our emerging gap:
+            <span class="orange">
+            strengthening the pathway between existing interventions
+            </span>
+            rather than simply creating another program.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SLIDE 8
+===================================================== -->
+
+<section class="slide">
+
+    <div class="section-number">07 · WHAT WE STILL NEED TO KNOW</div>
+    <div class="header-line"></div>
+
+    <h2>
+        Our research is not finished.
+    </h2>
+
+    <div class="research-grid">
+
+        <div class="research-item">
+            <div class="research-number">01</div>
+            <p>
+                Which interventions have the strongest evidence of reducing reoffending?
+            </p>
+        </div>
+
+        <div class="research-item">
+            <div class="research-number">02</div>
+            <p>
+                Which young people benefit most from particular forms of intervention?
+            </p>
+        </div>
+
+        <div class="research-item">
+            <div class="research-number">03</div>
+            <p>
+                Where do young people fall out of existing support pathways?
+            </p>
+        </div>
+
+        <div class="research-item">
+            <div class="research-number">04</div>
+            <p>
+                What barriers prevent organisations from providing continuous support?
+            </p>
+        </div>
+
+        <div class="research-item">
+            <div class="research-number">05</div>
+            <p>
+                How do young people's experiences differ from institutional assumptions?
+            </p>
+        </div>
+
+        <div class="research-item">
+
+            <div class="research-number">
+                EVIDENCE
+            </div>
+
+            <p>
+                Academic literature · Government reports · Program evaluations · Data · Policy · Stakeholder perspectives
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SLIDE 9
+===================================================== -->
+
+<section class="slide">
+
+    <div class="section-number">08 · OUR PROPOSED CONTRIBUTION</div>
+    <div class="header-line"></div>
+
+    <h2>
+        From fragmented intervention
+        <span class="orange">to a connected prevention pathway.</span>
+    </h2>
+
+    <div class="prevention-path">
+
+        <div class="path-item">
+            <div class="path-number">01</div>
+            <div class="path-title">IDENTIFY</div>
+        </div>
+
+        <div class="path-arrow">→</div>
+
+        <div class="path-item">
+            <div class="path-number">02</div>
+            <div class="path-title">ASSESS</div>
+        </div>
+
+        <div class="path-arrow">→</div>
+
+        <div class="path-item">
+            <div class="path-number">03</div>
+            <div class="path-title">MATCH</div>
+        </div>
+
+        <div class="path-arrow">→</div>
+
+        <div class="path-item">
+            <div class="path-number">04</div>
+            <div class="path-title">CONNECT</div>
+        </div>
+
+        <div class="path-arrow">→</div>
+
+        <div class="path-item">
+            <div class="path-number">05</div>
+            <div class="path-title">FOLLOW UP</div>
+        </div>
+
+    </div>
+
+    <div class="contribution">
+
+        <p>
+            <strong>Our proposed contribution:</strong>
+            develop an evidence-informed framework showing how existing services
+            could be better connected — from early identification and individual
+            assessment to mentoring, education, family support and longer-term follow-up.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SLIDE 10
+===================================================== -->
+
+<section class="slide">
+
+    <div class="section-number">09 · OUR GROUP APPROACH</div>
+    <div class="header-line"></div>
+
+    <h2>
+        Mobilising our interdisciplinary skills
+    </h2>
+
+    <div class="team-grid">
+
+        <div class="team-card">
+
+            <div class="symbol">⚖</div>
+
+            <h3>Legal & Policy</h3>
+
+            <p>
+                Youth justice law, diversion frameworks and policy
+            </p>
+
+        </div>
+
+        <div class="team-card">
+
+            <div class="symbol">⌕</div>
+
+            <h3>Research</h3>
+
+            <p>
+                Academic literature and program evaluations
+            </p>
+
+        </div>
+
+        <div class="team-card">
+
+            <div class="symbol">▦</div>
+
+            <h3>Data</h3>
+
+            <p>
+                Offending and reoffending patterns
+            </p>
+
+        </div>
+
+        <div class="team-card">
+
+            <div class="symbol">◎</div>
+
+            <h3>Stakeholders</h3>
+
+            <p>
+                Young people and community organisations
+            </p>
+
+        </div>
+
+        <div class="team-card">
+
+            <div class="symbol">◇</div>
+
+            <h3>Design</h3>
+
+            <p>
+                Translate evidence into an intervention framework
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="method">
+
+        RESEARCH
+        <span class="orange">→</span>
+        ANALYSE
+        <span class="orange">→</span>
+        SYNTHESISE
+        <span class="orange">→</span>
+        DESIGN
+        <span class="orange">→</span>
+        TEST
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SLIDE 11
+===================================================== -->
+
+<section class="slide">
+
+    <div class="section-number">10 · FEEDBACK</div>
+    <div class="header-line"></div>
+
+    <div class="feedback-question">
+
+        <h2>
+            One thing we are unsure about
+        </h2>
+
+        <div class="main-question">
+
+            Should our intervention focus primarily on
+            <span class="orange">improving existing diversion</span>
+            or
+            <span class="blue">strengthening continuity?</span>
+
+        </div>
+
+    </div>
+
+    <div class="options">
+
+        <div class="option">
+
+            <h3>A — Improve Existing Diversion</h3>
+
+            <p>
+                Better identification · better targeting ·
+                more individualised intervention
+            </p>
+
+        </div>
+
+        <div class="option">
+
+            <h3>B — Strengthen Continuity</h3>
+
+            <p>
+                Diversion → education → family support →
+                mentoring → employment → follow-up
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="feedback-bottom">
+
+        Which direction would produce a stronger and more realistic
+        case-study intervention for our partner organisation?
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SLIDE 12
+===================================================== -->
+
+<section class="slide">
+
+    <div class="section-number">REFERENCES</div>
+    <div class="header-line"></div>
+
+    <h2>
+        Selected References
+    </h2>
+
+    <div class="references">
+
+        <p>
+            Australian Institute of Health and Welfare (2026).
+            <em>Youth justice in Australia 2024–25.</em>
+        </p>
+
+        <p>
+            NSW Bureau of Crime Statistics and Research (2026).
+            <em>Youth crime.</em>
+        </p>
+
+        <p>
+            NSW Bureau of Crime Statistics and Research (2026).
+            <em>Reoffending.</em>
+        </p>
+
+        <p>
+            Klauzner, I., Poynton, S., Weatherburn, D., & Thorburn, H. (2022).
+            <em>Evaluating Youth on Track: A randomised controlled trial of an
+            early intervention program for young people who offend.</em>
+            BOCSAR.
+        </p>
+
+        <p>
+            NSW Department of Communities and Justice (2022).
+            <em>Youth mentoring: Evidence review.</em>
+        </p>
+
+    </div>
+
+    <div class="question-box" style="margin-top:25px;">
+
+        <p>
+            <strong>Thank you.</strong>
+            <br>
+            We welcome your questions and feedback.
+        </p>
+
+    </div>
+
+</section>
+
 
 </div>
 
-<div class="card">
 
-### Reoffending
+<!-- =========================
+     CONTROLS
+========================= -->
 
-Among young people released from sentenced custody in **2023**, approximately **62.5% reoffended within 12 months**.
+<div class="controls">
 
-</div>
+    <button onclick="previousSlide()">‹</button>
 
-<div class="highlight">
+    <button onclick="nextSlide()">›</button>
 
-### The question
-
-**If overall youth offending is falling, why do some young people remain caught in cycles of reoffending?**
-
-</div>
-
-<br>
-
-<span class="small">Source: NSW Bureau of Crime Statistics and Research (BOCSAR), 2026.</span>
-
----
-
-# 02 — Moving Beyond “Youth Crime”
-
-## Our focus is narrower than youth crime generally
-
-### We are focusing on:
-
-<div class="big center">
-
-**YOUTH REOFFENDING**
+    <button onclick="toggleFullscreen()">⛶</button>
 
 </div>
 
-### Specifically:
-
-**Early Intervention → Diversion → Community Support → Reoffending**
-
-<br>
-
-| We are NOT primarily asking | We ARE asking |
-|---|---|
-| Why do young people commit crime? | Why do some young people continue to reoffend? |
-| How should young people be punished? | How can repeated justice involvement be prevented? |
-| Is youth crime increasing? | Where are current interventions falling short? |
-
-<br>
-
-<blockquote>
-Our project shifts the question from <strong>punishment</strong> to <strong>prevention</strong>.
-</blockquote>
-
----
-
-# 03 — Our Core Research Question
-
-## The problem we are investigating
-
-<div class="highlight">
-
-### Central Question
-
-**How can existing early-intervention and diversion pathways be strengthened to reduce repeated youth offending in NSW?**
-
+<div class="page-number" id="pageNumber">
+    1 / 12
 </div>
 
-<br>
+<div class="progress" id="progress"></div>
 
-### Supporting questions
 
-**01 — Identification**
+<script>
 
-Which factors are associated with repeated youth offending?
+let currentSlide = 0;
 
-**02 — Intervention**
+const slides = document.querySelectorAll(".slide");
+const pageNumber = document.getElementById("pageNumber");
+const progress = document.getElementById("progress");
 
-Which diversion and early-intervention programs demonstrate measurable outcomes?
 
-**03 — Implementation**
+function showSlide(index) {
 
-Why do apparently effective interventions produce different outcomes across young people or settings?
+    if (index < 0) {
+        index = slides.length - 1;
+    }
 
-**04 — Continuity**
+    if (index >= slides.length) {
+        index = 0;
+    }
 
-Where do gaps occur between diversion, family support, education, employment and longer-term community services?
+    slides.forEach(slide => {
+        slide.classList.remove("active");
+    });
 
----
+    slides[index].classList.add("active");
 
-# 04 — What Already Exists?
+    currentSlide = index;
 
-## NSW already has intervention mechanisms
+    pageNumber.textContent =
+        `${currentSlide + 1} / ${slides.length}`;
 
-### Diversion
+    progress.style.width =
+        `${((currentSlide + 1) / slides.length) * 100}%`;
 
-- Police warnings and cautions
-- Youth Justice Conferences
-- Community-based responses
+}
 
-### Early intervention
 
-- **Youth on Track**
-- Case management
-- Family and cognitive-behavioural interventions
+function nextSlide() {
+    showSlide(currentSlide + 1);
+}
 
-### Community support
 
-- Mentoring
-- Education and employment support
-- Housing and social services
+function previousSlide() {
+    showSlide(currentSlide - 1);
+}
 
-<br>
 
-<div class="highlight">
+function toggleFullscreen() {
 
-### Therefore, the problem is NOT simply:
+    if (!document.fullscreenElement) {
 
-**“There are no programs.”**
+        document.documentElement.requestFullscreen();
 
-### Our emerging question is:
+    } else {
 
-**“Are existing interventions sufficiently targeted, coordinated and sustained?”**
+        document.exitFullscreen();
 
-</div>
+    }
 
----
+}
 
-# 05 — What We Have Discovered
 
-## Early evidence points to a complex picture
+/* Keyboard controls */
 
-### Finding 01
+document.addEventListener("keydown", function(event) {
 
-**Youth offending is not simply increasing.**
+    switch(event.key) {
 
-Long-term NSW data indicates substantial declines in youth offending.
+        case "ArrowRight":
+        case "ArrowDown":
+        case " ":
+        case "PageDown":
 
----
+            event.preventDefault();
+            nextSlide();
+            break;
 
-### Finding 02
+        case "ArrowLeft":
+        case "ArrowUp":
+        case "PageUp":
 
-**Reoffending remains concentrated among a smaller but important group.**
+            event.preventDefault();
+            previousSlide();
+            break;
 
-Young people released from sentenced custody experience particularly high rates of subsequent offending.
+        case "Home":
 
----
+            showSlide(0);
+            break;
 
-### Finding 03
+        case "End":
 
-**Intervention does not automatically equal effectiveness.**
+            showSlide(slides.length - 1);
+            break;
 
-Evaluation of Youth on Track found mixed outcomes, including no statistically significant overall effect on reoffending and custody outcomes.
+        case "f":
+        case "F":
 
----
+            toggleFullscreen();
+            break;
 
-### Finding 04
+        case "Escape":
 
-**Community relationships may matter.**
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            }
 
-Evidence on youth mentoring identifies factors such as matching, supervision, engagement and community networks as important components.
+            break;
 
-<br>
+    }
 
-<span class="small">
-Sources: BOCSAR (2022; 2026); NSW Department of Communities and Justice (2022).
-</span>
+});
 
----
 
-# 06 — The Gap We Identified
+/* Mouse click */
 
-## Our emerging intervention opportunity
+document.addEventListener("click", function(event) {
 
-<div class="big center">
+    if (
+        event.target.closest(".controls") ||
+        event.target.closest("button")
+    ) {
+        return;
+    }
 
-Programs exist.
+    const screenWidth = window.innerWidth;
 
-<br>
+    if (event.clientX > screenWidth / 2) {
 
-But pathways may not always connect.
+        nextSlide();
 
-</div>
+    } else {
 
-<br>
+        previousSlide();
 
-### Potential gaps
+    }
 
-**TARGETING**
+});
 
-Are interventions sufficiently tailored to individual needs?
 
-↓
+/* Touch / swipe */
 
-**COORDINATION**
+let touchStartX = 0;
 
-Are education, family, justice and community services connected?
+document.addEventListener("touchstart", function(event) {
 
-↓
+    touchStartX = event.changedTouches[0].screenX;
 
-**CONTINUITY**
+});
 
-What happens after a young person completes an intervention?
 
-↓
+document.addEventListener("touchend", function(event) {
 
-**SUSTAINABILITY**
+    const touchEndX =
+        event.changedTouches[0].screenX;
 
-Can positive behavioural changes be maintained?
+    const difference =
+        touchStartX - touchEndX;
 
-<br>
+    if (Math.abs(difference) > 50) {
 
-<div class="highlight">
+        if (difference > 0) {
+            nextSlide();
+        } else {
+            previousSlide();
+        }
 
-### Our emerging gap
+    }
 
-**The challenge may be less about creating another program and more about strengthening the pathway between existing interventions.**
+});
 
-</div>
 
----
+showSlide(0);
 
-# 07 — What We Still Need to Know
+</script>
 
-## Our research is not finished
-
-### We need stronger evidence about:
-
-**01**
-
-Which interventions have the strongest evidence of reducing reoffending?
-
-**02**
-
-Which young people benefit most from particular forms of intervention?
-
-**03**
-
-Where do young people fall out of existing support pathways?
-
-**04**
-
-What barriers prevent organisations from providing continuous support?
-
-**05**
-
-How do young people's own experiences differ from institutional assumptions?
-
-<br>
-
-### Evidence we will examine
-
-Academic literature · Government reports · Program evaluations · Reoffending data · Policy documents · Stakeholder perspectives
-
----
-
-# 08 — Our Proposed Contribution
-
-## From fragmented intervention to a connected prevention pathway
-
-<div class="center medium">
-
-### IDENTIFY
-↓
-### ASSESS
-↓
-### MATCH
-↓
-### CONNECT
-↓
-### FOLLOW UP
-
-</div>
-
-<br>
-
-### Youth Reoffending Prevention Pathway
-
-**Early identification**
-
-→ **Individual needs assessment**
-
-→ **Matched mentoring / intervention**
-
-→ **Education + employment + family support**
-
-→ **Cross-service coordination**
-
-→ **Longer-term follow-up**
-
-<br>
-
-<div class="highlight">
-
-### Our contribution
-
-We aim to develop an **evidence-informed framework** showing how existing services could be better connected to reduce the risk of repeated justice involvement.
-
-</div>
-
----
-
-# 09 — How Our Group Will Work
-
-## Mobilising interdisciplinary skills
-
-| Skill | Contribution |
-|---|---|
-| **Legal & Policy Analysis** | Analyse youth justice legislation, diversion frameworks and policy |
-| **Research & Evidence** | Evaluate academic research and program evaluations |
-| **Data Analysis** | Identify patterns in offending and reoffending |
-| **Stakeholder Research** | Understand perspectives of young people and service organisations |
-| **Design & Communication** | Translate research into an accessible intervention framework |
-
-<br>
-
-### Our approach
-
-<div class="big center">
-
-**RESEARCH → ANALYSE → SYNTHESISE → DESIGN → TEST**
-
-</div>
-
-<br>
-
-We will also use the unit's skills workshops to strengthen our:
-
-**research methods · stakeholder engagement · evidence evaluation · communication · project design**
-
----
-
-# 10 — What Do We Want Feedback On?
-
-## Our key uncertainty
-
-<div class="highlight center">
-
-### Should our intervention focus primarily on:
-
-<br>
-
-## A — Improving existing diversion
-
-**Better identification · better targeting · more individualised intervention**
-
-<br>
-
-### OR
-
-<br>
-
-## B — Strengthening continuity
-
-**Diversion → education → family support → mentoring → employment → follow-up**
-
-</div>
-
-<br>
-
-### Our question to the class
-
-> **Which direction would produce a stronger and more realistic case-study intervention for our partner organisation?**
-
-<br>
-
-<div class="center small">
-
-Your feedback will help us refine our research scope before developing the final intervention.
-
-</div>
-
----
-
-# References
-
-## Selected References
-
-Australian Institute of Health and Welfare (2026).  
-*Youth justice in Australia 2024–25.*
-
-<br>
-
-NSW Bureau of Crime Statistics and Research (2026).  
-*Youth crime.*
-
-<br>
-
-NSW Bureau of Crime Statistics and Research (2026).  
-*Reoffending.*
-
-<br>
-
-Klauzner, I., Poynton, S., Weatherburn, D., & Thorburn, H. (2022).  
-*Evaluating Youth on Track: A randomised controlled trial of an early intervention program for young people who offend.* BOCSAR.
-
-<br>
-
-NSW Department of Communities and Justice (2022).  
-*Youth mentoring: Evidence review.*
-
-<br>
-
-<span class="small">
-All statistics and claims should be checked against the final sources used by the group before submission.
-</span>
+</body>
+</html>
