@@ -1,154 +1,525 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<title>7-Min Academic Pitch: Youth Crime Intervention</title>
-		<style>
-			:root {
-				--bg-dark: #12161a;
-				--card-bg: rgba(255, 255, 255, 0.04);
-				--primary: #e74c3c;
-				--secondary: #3498db;
-				--success: #2ecc71;
-				--text: #eeeeee;
-				--text-muted: #a0aab0;
-			}
-			html, body { width: 100%; height: 100%; overflow: hidden; margin: 0; padding: 0; background-color: var(--bg-dark); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-			
-			/* 幻灯片核心容器 */
-			.slides-window { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; background: radial-gradient(circle at center, #1a232d 0%, #0d1115 100%); }
-			.slide-layout { display: none; width: 90%; max-width: 1200px; height: 80%; max-height: 750px; flex-direction: column; justify-content: space-between; position: relative; box-sizing: border-box; }
-			.slide-layout.active { display: flex; animation: slideIn 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-			@keyframes slideIn { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
-			
-			/* 页眉页脚导航 */
-			.slide-header { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; font-size: 0.75em; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
-			.slide-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 12px; font-size: 0.7em; color: var(--text-muted); }
-			.slide-body { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px 0; box-sizing: border-box; overflow: hidden; }
-			
-			/* 排版样式 */
-			h2 { color: var(--primary); font-size: 2.2em; margin: 0 0 15px 0; font-weight: 800; text-align: left; width: 100%; text-shadow: 0 4px 12px rgba(231,76,60,0.2); }
-			h3 { color: #ffffff; font-size: 1.3em; margin: 0 0 20px 0; text-align: left; width: 100%; font-weight: 400; }
-			p { font-size: 1.05em; line-height: 1.6; color: #e0e0e0; margin: 0 0 15px 0; text-align: left; width: 100%; }
-			
-			/* 图文分栏、网格布局 */
-			.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; width: 100%; text-align: left; box-sizing: border-box; }
-			.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; width: 100%; text-align: left; box-sizing: border-box; }
-			
-			/* 饱满的卡片设计 */
-			.card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 20px; box-sizing: border-box; transition: all 0.3s ease; }
-			.card-accent-red { border-left: 5px solid var(--primary); background: rgba(231, 76, 60, 0.08); }
-			.card-accent-blue { border-left: 5px solid var(--secondary); background: rgba(52, 152, 219, 0.08); }
-			.card-accent-green { border-left: 5px solid var(--success); background: rgba(46, 204, 113, 0.08); }
-			.card h4 { margin: 0 0 10px 0; color: #fff; font-size: 1.15em; font-weight: 700; }
-			
-			/* 纯代码精美数据图表展示 */
-			.data-dashboard { display: flex; width: 100%; gap: 20px; margin-top: 10px; }
-			.data-stat-box { flex: 1; text-align: center; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 6px; border: 1px solid rgba(255,255,255,0.05); }
-			.data-number { font-size: 3em; font-weight: 900; color: var(--primary); margin-bottom: 5px; }
-			.data-label { font-size: 0.8em; color: var(--text-muted); text-transform: uppercase; }
-			
-			.bar-chart-container { width: 100%; margin-top: 15px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 6px; }
-			.bar-row { display: flex; align-items: center; margin-bottom: 12px; }
-			.bar-label { width: 200px; font-size: 0.8em; color: var(--text-muted); text-align: right; padding-right: 15px; }
-			.bar-track { flex: 1; height: 16px; background: rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden; }
-			.bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), #f39c12); border-radius: 8px; transition: width 1s ease; }
-			
-			/* 流程图/列表样式 */
-			ul { margin: 0; padding-left: 20px; }
-			li { margin-bottom: 8px; color: #d0d5d9; font-size: 0.95em; }
-			
-			/* 底部提词器 */
-			.speaker-script { width: 100%; background: rgba(241, 196, 15, 0.08); border: 1px dashed rgba(241, 196, 15, 0.3); border-radius: 6px; padding: 10px 15px; box-sizing: border-box; font-size: 0.75em; color: #f1c40f; line-height: 1.5; font-weight: 500; text-align: left; }
-			
-			/* 交互控制层 */
-			.interface-controls { position: fixed; bottom: 25px; right: 25px; display: flex; gap: 10px; z-index: 9999; }
-			.control-btn { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.15); padding: 10px 18px; cursor: pointer; border-radius: 6px; font-size: 0.9em; font-weight: bold; transition: all 0.2s ease; }
-			.control-btn:hover { background: var(--primary); border-color: var(--primary); }
-			.global-progress-line { position: fixed; bottom: 0; left: 0; height: 5px; background: var(--primary); transition: width 0.25s ease; z-index: 10000; }
-		</style>
-	</head>
-	<body>
-		<div class="global-progress-line" id="progressBar"></div>
-		
-		<div class="interface-controls">
-			<button class="control-btn" onclick="goToPrev()">◀ Prev</button>
-			<button class="control-btn" onclick="goToNext()">Next ▶</button>
-		</div>
+---
+marp: true
+theme: default
+paginate: true
+size: 16:9
+title: Preventing Youth Reoffending
+description: Group Case Study Pitch
+author: Group Case Study Team
+---
 
-		<div class="slides-window">
-			
-			<!-- Slide 1: Cover -->
-			<div class="slide-layout active">
-				<div class="slide-header"><span>Undergraduate Seminar Pitch</span><span>Slide 1 / 16</span></div>
-				<div class="slide-body" style="justify-content: center;">
-					<h1 style="font-size: 3.2em; color: var(--primary); margin: 0 0 10px 0; font-weight: 900; letter-spacing: -1px;">Rethinking Youth Crime</h1>
-					<h3 style="text-align: center; color: var(--text-muted); font-size: 1.4em;">A Targeted Digital Intervention Framework for Partner Organisations</h3>
-					<div style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; display:flex; gap: 40px;">
-						<span style="font-size:0.9em; color:#fff;"><strong>Presented by:</strong> Group 4</span>
-						<span style="font-size:0.9em; color:var(--text-muted);">7-Minute Presentation Brief</span>
-					</div>
-				</div>
-				<div class="slide-footer">
-					<div class="speaker-script">💡 SPEAKER SCRIPT (0:00-0:30): Welcome everyone. Today, Group 4 presents a digital intervention strategy designed to modernise traditional youth crime justice and post-release frameworks.</div>
-					<span>Use Left/Right Arrows or Click Buttons</span>
-				</div>
-			</div>
+<style>
+section {
+  font-family: "Aptos", "Arial", sans-serif;
+  background: #f7f8fa;
+  color: #17202a;
+  padding: 55px 75px;
+}
 
-			<!-- Slide 2: Agenda -->
-			<div class="slide-layout">
-				<div class="slide-header"><span>Structure & Timing</span><span>Slide 2 / 16</span></div>
-				<div class="slide-body">
-					<h2>Pitch Roadmap & Agenda</h2>
-					<h3>Structured rigorously to respect the strict 7-minute assignment brief</h3>
-					<div class="grid-2">
-						<div class="card">
-							<h4>Part I: Strategic Context</h4>
-							<ul>
-								<li>01. Specific Focus: Digital Recidivism</li>
-								<li>02. Regional Case Study Analysis</li>
-								<li>03. Core Case Empirical Evidence</li>
-								<li>04. Deep Dive: Peer Connections</li>
-							</ul>
-						</div>
-						<div class="card">
-							<h4>Part II: Intervention & Plan</h4>
-							<ul>
-								<li>05. Identified Institutional Gap</li>
-								<li>06. Proposed Mobile Contribution</li>
-								<li>07. Feasibility & Action Roadmap</li>
-								<li>08. Group Skills Mobilisation</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="slide-footer"><div class="speaker-script">💡 SPEAKER SCRIPT (0:30-0:50): Here is our agenda. We have divided our pitch into context analysis and our group's direct operational contribution blueprint.</div></div>
-			</div>
+h1 {
+  color: #16324f;
+  font-size: 42px;
+  font-weight: 800;
+}
 
-			<!-- Slide 3: Focus Statement -->
-			<div class="slide-layout">
-				<div class="slide-header"><span>1. Criminological Focus</span><span>Slide 3 / 16</span></div>
-				<div class="slide-body">
-					<h2>Our Specific Research Focus</h2>
-					<h3>Moving away from generic youth justice debates to address a modern vector</h3>
-					<p>Rather than evaluating juvenile correctional facilities broadly, our group focus narrows down tightly to investigate <span class="highlight-blue">Digital Recidivism Pathways</span> among juveniles aged 14-18 post-release.</p>
-					<div class="card card-accent-red" style="width: 100%;">
-						<h4>Why Digital Space?</h4>
-						<p style="font-size: 0.95em; margin: 0;">Traditional criminological models map criminal peer contact using geographical neighborhoods. Modern juvenile offenders utilize encrypted, unmonitored digital networks, making physical monitoring inadequate.</p>
-					</div>
-					<span class="citation">📚 Smith, A. & Jones, B. (2024). Digital spaces and juvenile recidivism. *Journal of Criminology*, 45(2), 112-125.</span>
-				</div>
-				<div class="slide-footer"><div class="speaker-script">💡 SPEAKER SCRIPT (0:50-1:20): We are narrowing our focus down to digital recidivism. Juveniles no longer re-offend just because of their physical block; they re-offend because of unmonitored digital peer pull.</div></div>
-			</div>
+h2 {
+  color: #1f5f8b;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
 
-			<!-- Slide 4: Case Study Environment -->
-			<div class="slide-layout">
-				<div class="slide-header"><span>2. Case Study Environment</span><span>Slide 4 / 16</span></div>
-				<div class="slide-body">
-					<h2>Case Study Context & Partners</h2>
-					<h3>Evaluating local institutional frameworks for operational realism</h3>
-					<div class="grid-2">
-						<div class="card">
-							<h4>Our Partner Organisations</h4>
-							<p style="font-size:0.9em;">We examine the transitional rehabilitation workflows used by local regional juvenile justice departments and non-profit community services.</p>
+h3 {
+  color: #d46b3c;
+}
+
+strong {
+  color: #d46b3c;
+}
+
+blockquote {
+  border-left: 6px solid #d46b3c;
+  padding-left: 20px;
+  color: #30475e;
+  font-size: 25px;
+}
+
+.small {
+  font-size: 18px;
+}
+
+.medium {
+  font-size: 23px;
+}
+
+.big {
+  font-size: 34px;
+  font-weight: 700;
+}
+
+.center {
+  text-align: center;
+}
+
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 22px;
+  margin: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.highlight {
+  background: #fff1e8;
+  border-left: 6px solid #d46b3c;
+  padding: 18px 25px;
+  border-radius: 10px;
+}
+
+.blue {
+  color: #1f5f8b;
+}
+
+.orange {
+  color: #d46b3c;
+}
+
+footer {
+  color: #64748b;
+}
+</style>
+
+<!-- _class: lead -->
+
+# Preventing Youth Reoffending
+
+## Strengthening Early Intervention and Community-Based Diversion in NSW
+
+<br>
+
+### Group Case Study Pitch
+
+**From punishment to prevention**
+
+<br>
+
+Group Members  
+Name 1 · Name 2 · Name 3 · Name 4
+
+---
+
+# 01 — Why This Matters
+
+## Youth offending is declining — but reoffending remains a serious challenge
+
+<div class="card">
+
+### NSW youth offending
+
+Youth offending has **declined substantially over the long term**.
+
+</div>
+
+<div class="card">
+
+### Reoffending
+
+Among young people released from sentenced custody in **2023**, approximately **62.5% reoffended within 12 months**.
+
+</div>
+
+<div class="highlight">
+
+### The question
+
+**If overall youth offending is falling, why do some young people remain caught in cycles of reoffending?**
+
+</div>
+
+<br>
+
+<span class="small">Source: NSW Bureau of Crime Statistics and Research (BOCSAR), 2026.</span>
+
+---
+
+# 02 — Moving Beyond “Youth Crime”
+
+## Our focus is narrower than youth crime generally
+
+### We are focusing on:
+
+<div class="big center">
+
+**YOUTH REOFFENDING**
+
+</div>
+
+### Specifically:
+
+**Early Intervention → Diversion → Community Support → Reoffending**
+
+<br>
+
+| We are NOT primarily asking | We ARE asking |
+|---|---|
+| Why do young people commit crime? | Why do some young people continue to reoffend? |
+| How should young people be punished? | How can repeated justice involvement be prevented? |
+| Is youth crime increasing? | Where are current interventions falling short? |
+
+<br>
+
+<blockquote>
+Our project shifts the question from <strong>punishment</strong> to <strong>prevention</strong>.
+</blockquote>
+
+---
+
+# 03 — Our Core Research Question
+
+## The problem we are investigating
+
+<div class="highlight">
+
+### Central Question
+
+**How can existing early-intervention and diversion pathways be strengthened to reduce repeated youth offending in NSW?**
+
+</div>
+
+<br>
+
+### Supporting questions
+
+**01 — Identification**
+
+Which factors are associated with repeated youth offending?
+
+**02 — Intervention**
+
+Which diversion and early-intervention programs demonstrate measurable outcomes?
+
+**03 — Implementation**
+
+Why do apparently effective interventions produce different outcomes across young people or settings?
+
+**04 — Continuity**
+
+Where do gaps occur between diversion, family support, education, employment and longer-term community services?
+
+---
+
+# 04 — What Already Exists?
+
+## NSW already has intervention mechanisms
+
+### Diversion
+
+- Police warnings and cautions
+- Youth Justice Conferences
+- Community-based responses
+
+### Early intervention
+
+- **Youth on Track**
+- Case management
+- Family and cognitive-behavioural interventions
+
+### Community support
+
+- Mentoring
+- Education and employment support
+- Housing and social services
+
+<br>
+
+<div class="highlight">
+
+### Therefore, the problem is NOT simply:
+
+**“There are no programs.”**
+
+### Our emerging question is:
+
+**“Are existing interventions sufficiently targeted, coordinated and sustained?”**
+
+</div>
+
+---
+
+# 05 — What We Have Discovered
+
+## Early evidence points to a complex picture
+
+### Finding 01
+
+**Youth offending is not simply increasing.**
+
+Long-term NSW data indicates substantial declines in youth offending.
+
+---
+
+### Finding 02
+
+**Reoffending remains concentrated among a smaller but important group.**
+
+Young people released from sentenced custody experience particularly high rates of subsequent offending.
+
+---
+
+### Finding 03
+
+**Intervention does not automatically equal effectiveness.**
+
+Evaluation of Youth on Track found mixed outcomes, including no statistically significant overall effect on reoffending and custody outcomes.
+
+---
+
+### Finding 04
+
+**Community relationships may matter.**
+
+Evidence on youth mentoring identifies factors such as matching, supervision, engagement and community networks as important components.
+
+<br>
+
+<span class="small">
+Sources: BOCSAR (2022; 2026); NSW Department of Communities and Justice (2022).
+</span>
+
+---
+
+# 06 — The Gap We Identified
+
+## Our emerging intervention opportunity
+
+<div class="big center">
+
+Programs exist.
+
+<br>
+
+But pathways may not always connect.
+
+</div>
+
+<br>
+
+### Potential gaps
+
+**TARGETING**
+
+Are interventions sufficiently tailored to individual needs?
+
+↓
+
+**COORDINATION**
+
+Are education, family, justice and community services connected?
+
+↓
+
+**CONTINUITY**
+
+What happens after a young person completes an intervention?
+
+↓
+
+**SUSTAINABILITY**
+
+Can positive behavioural changes be maintained?
+
+<br>
+
+<div class="highlight">
+
+### Our emerging gap
+
+**The challenge may be less about creating another program and more about strengthening the pathway between existing interventions.**
+
+</div>
+
+---
+
+# 07 — What We Still Need to Know
+
+## Our research is not finished
+
+### We need stronger evidence about:
+
+**01**
+
+Which interventions have the strongest evidence of reducing reoffending?
+
+**02**
+
+Which young people benefit most from particular forms of intervention?
+
+**03**
+
+Where do young people fall out of existing support pathways?
+
+**04**
+
+What barriers prevent organisations from providing continuous support?
+
+**05**
+
+How do young people's own experiences differ from institutional assumptions?
+
+<br>
+
+### Evidence we will examine
+
+Academic literature · Government reports · Program evaluations · Reoffending data · Policy documents · Stakeholder perspectives
+
+---
+
+# 08 — Our Proposed Contribution
+
+## From fragmented intervention to a connected prevention pathway
+
+<div class="center medium">
+
+### IDENTIFY
+↓
+### ASSESS
+↓
+### MATCH
+↓
+### CONNECT
+↓
+### FOLLOW UP
+
+</div>
+
+<br>
+
+### Youth Reoffending Prevention Pathway
+
+**Early identification**
+
+→ **Individual needs assessment**
+
+→ **Matched mentoring / intervention**
+
+→ **Education + employment + family support**
+
+→ **Cross-service coordination**
+
+→ **Longer-term follow-up**
+
+<br>
+
+<div class="highlight">
+
+### Our contribution
+
+We aim to develop an **evidence-informed framework** showing how existing services could be better connected to reduce the risk of repeated justice involvement.
+
+</div>
+
+---
+
+# 09 — How Our Group Will Work
+
+## Mobilising interdisciplinary skills
+
+| Skill | Contribution |
+|---|---|
+| **Legal & Policy Analysis** | Analyse youth justice legislation, diversion frameworks and policy |
+| **Research & Evidence** | Evaluate academic research and program evaluations |
+| **Data Analysis** | Identify patterns in offending and reoffending |
+| **Stakeholder Research** | Understand perspectives of young people and service organisations |
+| **Design & Communication** | Translate research into an accessible intervention framework |
+
+<br>
+
+### Our approach
+
+<div class="big center">
+
+**RESEARCH → ANALYSE → SYNTHESISE → DESIGN → TEST**
+
+</div>
+
+<br>
+
+We will also use the unit's skills workshops to strengthen our:
+
+**research methods · stakeholder engagement · evidence evaluation · communication · project design**
+
+---
+
+# 10 — What Do We Want Feedback On?
+
+## Our key uncertainty
+
+<div class="highlight center">
+
+### Should our intervention focus primarily on:
+
+<br>
+
+## A — Improving existing diversion
+
+**Better identification · better targeting · more individualised intervention**
+
+<br>
+
+### OR
+
+<br>
+
+## B — Strengthening continuity
+
+**Diversion → education → family support → mentoring → employment → follow-up**
+
+</div>
+
+<br>
+
+### Our question to the class
+
+> **Which direction would produce a stronger and more realistic case-study intervention for our partner organisation?**
+
+<br>
+
+<div class="center small">
+
+Your feedback will help us refine our research scope before developing the final intervention.
+
+</div>
+
+---
+
+# References
+
+## Selected References
+
+Australian Institute of Health and Welfare (2026).  
+*Youth justice in Australia 2024–25.*
+
+<br>
+
+NSW Bureau of Crime Statistics and Research (2026).  
+*Youth crime.*
+
+<br>
+
+NSW Bureau of Crime Statistics and Research (2026).  
+*Reoffending.*
+
+<br>
+
+Klauzner, I., Poynton, S., Weatherburn, D., & Thorburn, H. (2022).  
+*Evaluating Youth on Track: A randomised controlled trial of an early intervention program for young people who offend.* BOCSAR.
+
+<br>
+
+NSW Department of Communities and Justice (2022).  
+*Youth mentoring: Evidence review.*
+
+<br>
+
+<span class="small">
+All statistics and claims should be checked against the final sources used by the group before submission.
+</span>
